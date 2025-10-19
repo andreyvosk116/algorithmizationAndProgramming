@@ -1,6 +1,4 @@
-import java.util.Arrays;
 import java.util.Random;
-import java.util.random.*;
 
 public class SecondLabSorts {
     public static void main(String[] args) throws Exception {
@@ -15,12 +13,14 @@ public class SecondLabSorts {
 
 
         bubbleSort(test1List1);
+        shakeSort(test1List2);
+
 
         
     }
 
     public static void bubbleSort(int[] arr) {
-
+        // Пузырьковая сортировка 
         int lenArr = arr.length;
 
         double startTimeNano = System.nanoTime();
@@ -46,6 +46,50 @@ public class SecondLabSorts {
 
     }
 
+    public static void shakeSort(int[] arr) {
+        // Сортировка перемешиванием
+        int right = arr.length - 1;
+        int left = 0;
+        int lenArr = arr.length;
+
+        double startTimeNano = System.nanoTime();
+        double startTimeMile = System.currentTimeMillis();
+        
+        while(left < right) {
+
+            for(int i = left; i < right; i++) {
+                if(arr[left] > arr[i]) {
+                    int temp = arr[left];
+                    arr[left] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+            left++;
+
+            for(int i = right; i >= left; i--) {
+                if(arr[right] < arr[i]) {
+                    int temp = arr[right];
+                    arr[right] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+            right--;
+        }
+
+        double endTimeNano = System.nanoTime();
+        double endTimeMile = System.currentTimeMillis();
+
+        double resNano = endTimeNano - startTimeNano;
+        double resMiles = endTimeMile - startTimeMile;
+
+        System.out.printf("Время потраченное на сортировку перемешиванием в милисекундах = %f, в наносекундах = %f%n", resMiles, resNano);
+
+    }
+
+    public static void heapSort(int[] arr) {
+        
+    }  
+
     public static int[] copyList(int[] arr) {
         // Для копирования элементов массива 
         int[] newArr = new int[arr.length];
@@ -65,6 +109,8 @@ public class SecondLabSorts {
         for(int i = 0; i < lenght; i++) {
             newList[i] = random.nextInt(1000);
         }
+
+        return newList;
     }
 }
 
