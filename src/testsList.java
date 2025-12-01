@@ -50,5 +50,43 @@ public class testsList {
         System.out.println("Первый элемент: " + doubleList.getFirst());
         System.out.println("Последний элемент: " + doubleList.getLast());
 
+        // Заполняем список
+        circularList.addFirst(52);
+        circularList.addLast(40);
+        circularList.addFirst(31);
+        circularList.display();
+        
+        // Удаляем элементы
+        circularList.removeFirst();
+        circularList.removeLast();
+        circularList.display();
+        
+        // Иные функции
+        System.out.println("Пуст ли список: " + circularList.isEmpty());
+        System.out.println("Содержит 52: " + circularList.contains(52));
+        System.out.println("Содержит 31: " + circularList.contains(31));
+        System.out.println("Размер: " + circularList.size());
+        
+        // Дополнительные тесты для циклического списка
+        System.out.println("\nДополнительные тесты CircularLinkedList:");
+        circularList.addLast(100);
+        circularList.addFirst(200);
+        circularList.display();
+        System.out.println("Первый элемент: " + circularList.getFirst());
+        System.out.println("Последний элемент: " + circularList.getLast());
+        
+        // Тест вращения
+        System.out.println("После rotate():");
+        circularList.rotate();
+        circularList.display();
+        
+        // Тест на наличие цикла
+        System.out.println("Есть цикл: " + circularList.findCycle());
+        
+        // Тест разделения списка
+        System.out.println("\nТест разделения списка:");
+        circularList.addLast(300);
+        circularList.addLast(400);
+        circularList.display();
     }
 }
